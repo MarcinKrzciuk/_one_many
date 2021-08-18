@@ -2,7 +2,6 @@ package com.example.demo.entieties;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,24 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "posts")
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id_post")
+    private long idPost;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn( name = "pc_fid", referencedColumnName = "id")
+    @JoinColumn(name = "id_post", referencedColumnName = "id_post")
     List<Comment> comments = new ArrayList<>();
 
     public Post() {
@@ -41,14 +37,12 @@ public class Post {
         this.description = description;
     }
 
-
-
     public long getId() {
-        return id;
+        return idPost;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long idPost) {
+        this.idPost = idPost;
     }
 
     public String getTitle() {

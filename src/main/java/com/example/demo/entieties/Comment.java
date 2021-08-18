@@ -1,22 +1,17 @@
 package com.example.demo.entieties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "comments")
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id_comment")
+    private long idComment;
     private String text;
 
     public Comment() {
-
     }
 
     public Comment(String text) {
@@ -24,10 +19,10 @@ public class Comment {
         this.text = text;
     }
     public long getId() {
-        return id;
+        return idComment;
     }
     public void setId(long id) {
-        this.id = id;
+        this.idComment = id;
     }
     public String getText() {
         return text;
